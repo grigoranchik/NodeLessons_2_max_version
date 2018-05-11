@@ -1,6 +1,5 @@
 angular.module("myApp",[]).controller('ctrlFofLeftTable', ['$scope', '$timeout', '$http', '$q', function ($scope, $timeout, $http, $q) {
 
-
     debugger;
     $scope.path_LeftTable = 'C://';
     $scope.renderData_LeftTable = [];

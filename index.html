@@ -26,37 +26,41 @@
 
 </style>-->
 <!--left-->
-<table ng-controller="ctrlFofLeftTable" style="float: left;" cellpadding="0" border="2">
+<div ng-controller="ctrlFofLeftTable" ng-scope>
+    <table style="float: left;" cellpadding="0" border="2">
 
-    <tr>
-        <td>
-            <input type="text" ng-model="path_LeftTable" />
-            <button ng-click="onSendMess_LeftTable()">send</button>
-            <button ng-click="back_LeftTable()">back</button></br>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <input type="text" ng-model="path_LeftTable" />
+                <button ng-click="onSendMess_LeftTable()">send</button>
+                <button ng-click="back_LeftTable()">back</button></br>
+            </td>
+        </tr>
 
-    <tr ng-repeat="value in renderData_LeftTable track by $index">
-        <td ng-dblClick="onSendEnterIn_LeftTable()">{{value}}</td>
-    </tr>
+        <tr ng-repeat="value in renderData_LeftTable track by $index">
+            <td ng-dblClick="onSendEnterIn_LeftTable()">{{value}}</td>
+        </tr>
 
-</table>
-
+    </table>
+</div>
 <!--right-->
-<table ng-controller="ctrlFofRightTable" style="margin-left:500px;" cellpadding="0" border="2">
-    <tr>
-        <td>
-            <input type="text" ng-model="path_RightTable" />
-            <button ng-click="onSendMess_RightTable()">send</button>
-            <button ng-click="back_RightTable()">back</button></br>
-        </td>
-    </tr>
 
-    <tr ng-repeat="value in renderData_RightTable track by $index">
-        <td ng-dblClick="onSendEnterIn_RightTable()">{{value}}</td>
-    </tr>
+<div ng-controller="ctrlFofRightTable" ng-scope>
+    <table style="margin-left:500px;" cellpadding="0" border="2">
+        <tr>
+            <td>
+                <input type="text" ng-model="path_RightTable" />
+                <button ng-click="onSendMess_RightTable()">send</button>
+                <button ng-click="back_RightTable()">back</button></br>
+            </td>
+        </tr>
 
-</table>
+        <tr ng-repeat="value in renderData_RightTable track by $index">
+            <td ng-dblClick="onSendEnterIn_RightTable()">{{value}}</td>
+        </tr>
+
+    </table>
+</div>
 
 </body>
 </html>

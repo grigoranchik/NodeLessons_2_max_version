@@ -65,12 +65,10 @@ app.post('/send_path', function (req, res) {
 
             });*/
 
-            var objSend = new objectSend(items, req.body.which_of_tables);
-            res.send(objSend);
+            res.send(items);
         } else {
             var it = [];    //если папка пустая оправляем пустой массив
-            var objSend = new objectSend(it, req.body.which_of_tables);
-            res.send(objSend);
+            res.send(it);
         }
 
 
