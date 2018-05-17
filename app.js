@@ -19,12 +19,12 @@ app.get('/controllers/:id', function (req, res) {
 });
 
 app.post('/send_path', function (req, res) {
-    function objectSend(massOfFiles, which_of_tables) {
-        this.massOfFiles = massOfFiles;
-        this.which_of_tables = which_of_tables;
+    function objectSend(nameOfFile, characteristic) {
+        this.nameOfFile = nameOfFile;
+        this.characteristic = characteristic;
     };
     // var objectSend = new objectSEnd((massOfFiles, which_of_tables);
-    var massSend=[];
+    var massOfTypeFiles=[];
 
     fs.readdir(req.body.newPath, function(err, items) {
         var strPath = '';
@@ -33,46 +33,39 @@ app.post('/send_path', function (req, res) {
         } else{
             strPath = req.body.newPath +'//';
         }
-        console.log('strPath=', strPath,'items[0]=', items[0]);
-        if (items.length != undefined){
-            /*for(var i = 0; i<items.length; i++){
+        //console.log('strPath=', strPath,'items[0]=', items[0]);
+        if (items != undefined){
 
-                fs.stat(strPath + items[i], function(err, stats) {
-
-                    massSend[i] = new objectSend(items[i], stats.isFile());
-                });
-            }*/
-           /* var i =0;
+            var i =0;
             var recFunc = function () {
                 if(i<items.length){
                     fs.stat(strPath + items[i], function(err, stats) {
-                        console.log('items[i], stats.isFile():', items[i], stats.isFile());
-                        console.log('strPath + items[i]: ', strPath + items[i]);
-                        massSend[i] = new objectSend(items[i], stats.isFile());
+                        if(stats == undefined){
+                            massOfTypeFiles[i] = new objectSend(items[i], 'undefined');
+                        } else{
+                            if(stats.isFile() == true){
+                                massOfTypeFiles[i] = new objectSend(items[i], 'file');
+                            } else{
+                                massOfTypeFiles[i] = new objectSend(items[i], 'folder');
+                            }
+
+                        }
                         i++;
                         recFunc();
                     });
                 } else{
+                    res.send({newPath: items, massOfTypeFiles: massOfTypeFiles});
                     return 0;
                 }
 
             }
             recFunc();
-            massSend.join('/n');*/
-            /*fs.stat(strPath + items[8], function(err, stats) {
-                console.log('items[7], stats.isFile():', items[7], stats.isFile());
-                console.log('strPath + items[7]: ', strPath + items[7]);
+            //massSend.join('/n');
 
-            });*/
-
-            res.send(items);
         } else {
             var it = [];    //если папка пустая оправляем пустой массив
             res.send(it);
         }
-
-
-
     });
 
 });
